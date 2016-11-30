@@ -1,4 +1,10 @@
-/*Background Image*/
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+
+/*BACKGROUND IMAGE*/
 body{
     font-family: Arvo, serif;
     background: url("image.jpg") no-repeat center center;
@@ -6,7 +12,18 @@ body{
     background-size: cover;
 }
 
-/*Navigation bar*/
+
+/* JUMBOTRON*/
+.jumbotron{
+    background-color: transparent;
+    text-align: center;
+    letter-spacing: 2.5px;
+    padding: 10px;
+    margin-top: 150px;   
+}
+
+
+/*NAVIGATION BAR*/
 .navbar-custom, .footer {
   background-color: #62aacf;
   border-color: #499cc7;

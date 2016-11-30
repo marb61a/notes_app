@@ -25,7 +25,7 @@ include('remember.php');
         <nav role="navigation" class="navbar navbar-custom navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a>Online Notes App</a>
+                    <a class="navbar-brand">Online Notes App</a>
                     <button type="button" class="navbar-toggle" data-target="#navbarCollapse" data-toggle="collapse">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
@@ -45,5 +45,17 @@ include('remember.php');
                 </div>
             </div>
         </nav>
+        
+        <!--Jumbotron with Sign up Button-->
+        <div class="jumbotron" id="myContainer">
+            <h1>Online Notes App</h1>
+            <p>Your Notes with you wherever you go.</p>
+            <p>Easy to use, protects all your notes!</p>
+            <button type="button" class="btn btn-lg green signup" data-target="#signupModal" data-toggle="modal">
+                Sign Up It's free
+            </button>
+        </div>
+        
+        
     </body>
 </html>
