@@ -57,5 +57,40 @@ include('remember.php');
         </div>
         
         
+        <!--Login form-->
+        <form method="post" id="loginform">
+            <div class="modal" id="loginModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" data-dismiss="modal">
+                                &times;
+                            </button>
+                            <h4 id="myModalLabel">
+                                Login: 
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <!--Login message from PHP file-->
+                            <div id="loginmessage"></div>
+                            <div class="form-group">
+                                <label for="loginemail" class="sr-only">Email:</label>
+                                <input class="form-control" type="email" name="loginemail" id="loginemail" placeholder="Email" maxlength="50">
+                            </div>
+                            <div class="form-group">
+                                <label for="loginpassword" class="sr-only">Password</label>
+                                <input class="form-control" type="password" name="loginpassword" id="loginpassword" placeholder="Password" maxlength="30">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+       
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+        <script src="index.js"></script> 
     </body>
 </html>
