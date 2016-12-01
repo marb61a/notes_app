@@ -13,7 +13,7 @@ body{
 }
 
 
-/* JUMBOTRON*/
+/* JUMBOTRON */
 .jumbotron{
     background-color: transparent;
     text-align: center;
@@ -23,7 +23,21 @@ body{
 }
 
 
-/*NAVIGATION BAR*/
+/* BUTTONS */
+.signup{
+    margin-top: 50px;   
+}
+
+.green{
+    background-color: rgba(114,190,35,0.8);   
+}
+
+.green:hover{
+    background-color: rgb(114,190,35);   
+}
+
+
+/* NAVIGATION BAR */
 .navbar-custom, .footer {
   background-color: #62aacf;
   border-color: #499cc7;

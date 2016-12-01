@@ -81,6 +81,23 @@ include('remember.php');
                                 <label for="loginpassword" class="sr-only">Password</label>
                                 <input class="form-control" type="password" name="loginpassword" id="loginpassword" placeholder="Password" maxlength="30">
                             </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="rememberme" id="rememberme"> Remember me
+                                </label>
+                                <a class="pull-right" style="cursor: pointer" data-dismiss="modal" data-target="#forgotpasswordModal" data-toggle="modal" >
+                                    Forgot Password?
+                                </a>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input class="btn green" name="login" type="submit" value="Login">
+                            <button type="button"  class="btn btn-default" data-dismiss="modal">
+                                Cancel
+                            </button>
+                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal" data-target="signupModal" data-toggle="modal">
+                                Register
+                            </button>
                         </div>
                     </div>
                 </div>
