@@ -148,6 +148,15 @@ include('remember.php');
                 </div>
             </div>
         </form>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div class="container">
+                <p>
+                    Copyright &copy; 2015-<?php $today = date("Y"); echo $today?>
+                </p>
+            </div>
+        </div>
        
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
