@@ -68,11 +68,61 @@
         <!-- Navigation bar -->
         <nav role="navigation" class="navbar navbar-custom navbar-fixed-top">
             <div class="container-fluid">
-                <div class="navar-header">
-                    
+                <div class="navbar-header">
+                    <a class="navbar-brand">Online Notes App</a>
+                    <button type="button" class="navbar-toggle" data-target="#navbarCollapse" data-toggle="collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse" id="navbarCollapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="profile.php">Profile</a></li>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Contact us</a></li>
+                        <li class="active"><a href="#">My Notes</a></li>
+                    </ul>   
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#">Logged in as <b><?php echo $_SESSION['username']?></b></a>
+                        </li>
+                        <li>
+                            <a href="index.php?logout=1">Log out</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
+        
+        
+        <!-- Container -->
+        <div class="container" id="container">
+            <!-- Alert -->
+            <div id="alert" class="alert alert-danger collapse">
+                <a class="close" data-dismiss="alert">
+                    &times;
+                </a>
+                <p id="alertContent"></p>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-3 col-md-6">
+                    <div class="buttons">
+                        <button id="addNote" type="button" class="btn btn-info btn-lg">Add Note</button>
+                        <button id="edit" type="button" class="btn btn-info btn-lg pull-right">Edit</button>
+                        <button id="done" type="button" class="btn green btn-lg pull-right">Done</button>
+                        <button id="allNotes" type="button" class="btn btn-info btn-lg">All Notes</button>    
+                    </div>
+                    <div id="notePad">
+                        <textarea rows="10"></textarea>
+                    </div>
+                    <div id="notes" class="notes">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
         
         
         <!-- Footer -->
