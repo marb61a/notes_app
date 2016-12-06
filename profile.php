@@ -10,6 +10,35 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="styling.css" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>  
+        <style>
+            #container {
+                margin-top: 100px;
+            }
+            
+            #notePad, #allNotes, #done {
+                display: none;   
+            }
+            
+            .buttons {
+                margin-bottom: 20px;
+            }
+            
+            textarea {
+                width: 100%;
+                max-width: 100%;
+                font-size: 16px;
+                line-height: 1.5em;
+                border-left-width: 20px;
+                border-color: #CA3DD9;
+                color: #CA3DD9;
+                background-color: #FBEFFF;
+                padding: 10px;
+            }
+            
+            tr {
+                cursor: pointer;
+            }
+        </style>
         
     </head>
     <body>
@@ -43,6 +72,31 @@
                 </div>
             </div>
         </nav>
+        
+        <!-- Container -->
+        <div class="container" id="container">
+            <div class="row">
+                <div class="col-md-offset-3 col-md-6">
+                    <h2>General Account Settings</h2>
+                    <div class="table-responsive">
+                        <table class="table table-hover table-condensed table-bordered">
+                            <tr data-target="#updateusername" data-toggle="modal">
+                                <td>Username</td>
+                                <td><?php echo $username; ?></td>
+                            </tr>
+                            <tr data-target="#updateemail" data-toggle="modal">
+                                <td>Email</td>
+                                <td><?php echo $email; ?></td>
+                            </tr>
+                            <tr data-target="#updatepassword" data-toggle="modal">
+                                <td>Password</td>
+                                <td>Hidden</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
         
         <!-- Footer -->
         <div class="footer">
