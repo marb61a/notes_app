@@ -100,7 +100,7 @@
         </div>
         
         
-        <!-- Footer -->
+        <!-- Update Username -->
         <form method="post" id="updateusernameform">
             <div class="modal" id="updateusername" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -129,6 +129,41 @@
                                 Cancel
                             </button>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        
+        
+        <!-- Update Email -->
+        <form method="post" id="updateemailform">
+            <div class="modal" id="updateemail" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" data-dismiss="modal">
+                                &times;
+                            </button>
+                            <h4 id="myModalLabel">
+                                Enter new email
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <!--update username message from PHP file-->
+                            <div id="updateemailmessage"></div>
+                            <div class="form-group">
+                                <label for="email">
+                                    Email:
+                                </label>
+                                <input class="form-control" type="email" name="email" id="email" maxlength="30" value="<?php echo $email; ?>"/>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input class="btn green" name="updateusername" type="submit" value="Submit"/>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                Cancel
+                            </button>
+                        </div>     
                     </div>
                 </div>
             </div>
