@@ -56,14 +56,14 @@
                 </div>
                 <div class="navbar-collapse collapse" id="navbarCollapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="profile.php">Profile</a></li>
+                        <li class="active"><a href="#">Profile</a></li>
                         <li><a href="#">Help</a></li>
                         <li><a href="#">Contact us</a></li>
-                        <li class="active"><a href="#">My Notes</a></li>
+                        <li><a href="mainpageloggedin.php">My Notes</a></li>
                     </ul>   
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="#">Logged in as <b><?php echo $_SESSION['username']?></b></a>
+                            <a href="#">Logged in as <b><?php echo $username; ?></b></a>
                         </li>
                         <li>
                             <a href="index.php?logout=1">Log out</a>
@@ -72,6 +72,7 @@
                 </div>
             </div>
         </nav>
+        
         
         <!-- Container -->
         <div class="container" id="container">
@@ -97,6 +98,41 @@
                 </div>
             </div>
         </div>
+        
+        
+        <!-- Footer -->
+        <form method="post" id="updateusernameform">
+            <div class="modal" id="updateusername" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" data-dismiss="modal">
+                                &times;
+                            </button>
+                            <h4 id="myModalLabel">
+                                Edit Username
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <!--update username message from PHP file-->
+                            <div id="updateusernamemessage"></div>
+                            <div class="form-group">
+                                <label for="username">
+                                    Username: 
+                                </label>
+                                <input class="form-control" type="text" name="username" id="username" maxlength="30" value="<?php echo $username; ?>"/>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input class="btn green" name="updateusername" type="submit" value="Submit"/>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
         
         <!-- Footer -->
         <div class="footer">
