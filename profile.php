@@ -169,6 +169,53 @@
             </div>
         </form>
         
+        
+        <!-- Update Password -->
+        <form method="post" id="updatepasswordform">
+            <div class="modal" id="updatepassword" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" data-dismiss="modal">
+                                &times;
+                            </button>
+                            <h4 id="myModalLabel">
+                                Enter Current And New Password
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <!--Update password message from PHP file-->
+                            <div id="updatepasswordmessage"></div>
+                            <div class="form-group">
+                                <label for="currentpassword" class="sr-only">
+                                    Your Current Password    
+                                </label>  
+                                <input class="form-control" type="password" name="currentpassword" id="currentpassword" maxlength="30" placeholder="Your Current Password">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="sr-only">
+                                    Choose A Password:     
+                                </label>   
+                                <input class="form-control" type="password" name="password" id="password" maxlength="30" placeholder="Choose a password">
+                            </div>
+                            <div class="form-group">
+                                <label for="password2" class="sr-only">
+                                    Confirm Password:     
+                                </label>
+                                <input class="form-control" type="password" name="password2" id="password2" maxlength="30" placeholder="Confirm password">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input class="btn green" name="updateusername" type="submit" value="Submit">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        
         <!-- Footer -->
         <div class="footer">
             <div class="container">
