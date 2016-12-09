@@ -37,6 +37,16 @@ body{
 }
 
 
+/* FOOTER */
+.footer {
+  position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    padding-top: 10px;
+}
+
+
 /* NAVIGATION BAR */
 .navbar-custom, .footer {
   background-color: #62aacf;
