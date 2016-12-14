@@ -28,4 +28,32 @@
             $errors .= $invalidEmail;
         }
     }
+    
+    // Get passwords
+    if(empty($_POST["password"])){
+        $errors .= $missingPassword;    
+    } elseif (!(strlen($_POST["password"]) > 6
+        and preg_match('/[A-Z]/',$_POST["password"])
+        and preg_match('/[0-9]/',$_POST["password"]))
+    ) {
+        $errors .= $invalidPassword;    
+    } else {
+        $password = filter_var($_POST["password"], FILTER_SANITIZE_STRING);
+        if (empty($_POST["password2"])) {
+            $errors .= $missingPassword2;    
+        } else {
+            $password2 = filter_var($_POST["password2"], FILTER_SANITIZE_STRING);
+            
+            if($password !== $password2){
+                $errors .= $differentPassword;
+            }    
+        }
+    }
+    
+    // Print errors (if there are any)
+    if($errors){
+        $resultMessage = '<div class="alert alert-danger">' . $errors .'</div>';
+        echo $resultMessage;
+        exit;
+    }
 ?>
