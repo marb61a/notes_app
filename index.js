@@ -43,3 +43,24 @@ $("#loginform").submit(function(event){
         }
     });
 });
+
+
+// Ajax Call for the forgot password form once it is submitted
+$("#forgotpasswordform").submit(function(event){ 
+    // Prevent default processing
+    event.preventDefault();
+    // Collect user inputs
+    var datatopost = $(this).serializeArray();
+    // Send to signup.php using AJAX
+    $.ajax({
+        url: "forgot-password.php",
+        type: "POST",
+        data: datatopost,
+        success: function(data){
+            $('#forgotpasswordmessage').html(data);
+        },
+        error: function(){
+            $("#signupmessage").html("<div class='alert alert-danger'>There was an error with the Ajax Call. Please try again later.</div>");
+        }
+    });
+});
