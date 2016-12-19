@@ -39,6 +39,31 @@ $(function(){
                 $('#alertContent').text("Ajax Call Error. Please try again later.");
                 $("#alert").fadeIn();  
             }
-        })
-    })
+        });
+    });
+    
+    
+    // Update note using AJAX call to updatenote.php
+    $("#textarea").keyup(function(){
+        // AJAX call to update the task of id activenote
+        $.ajax({
+            url : 'updatenote.php',
+            type : "POST",
+            // Sends the content of the current note with ID to php file
+            data : {
+                note : $(this).val(),
+                id : activeNote
+            },
+            success : function(data){
+                if(data == 'error'){
+                    $('#alertContent').text("There was an issue updating the note in the database!");
+                    $("#alert").fadeIn();
+                }    
+            },
+            error : function(){
+                $('#alertContent').text("Ajax Call Error. Please try again later.");
+                $("#alert").fadeIn(); 
+            }
+        });
+    });
 })
