@@ -66,4 +66,31 @@ $(function(){
             }
         });
     });
+    
+    
+    // Click on all notes button
+    $("#allNotes").click(function(){
+        $.ajax({
+            url: "loadnotes.php",
+            success: function (data){
+                $('#notes').html(data);
+                showHide(["#addNote", "#edit", "#notes"], ["#allNotes", "#notePad"]);
+                clickonNote(); 
+                clickonDelete();
+            },
+            error: function(){
+                $('#alertContent').text("There was an error with the Ajax Call. Please try again later.");
+                $("#alert").fadeIn();
+            }
+        });
+    });
+    
+    // Click on done after editing and load notes again
+    $("#done").click(function(){
+        editMode = false;
+        // Expand notes
+        $(".noteheader").removeClass("col-xs-7 col-sm-9");
+        // Show hide elements
+        showHide(["#edit"],[this, ".delete"]);
+    });
 })
