@@ -93,4 +93,30 @@ $(function(){
         // Show hide elements
         showHide(["#edit"],[this, ".delete"]);
     });
+    
+    // Click on edit 
+    $("#edit").click(function(){
+        editMode = true;
+        // Reduce width of notes
+        $(".noteheader").addClass("col-xs-7 col-sm-9");
+        // Show hide elements
+        showHide(["#done", ".delete"],[this]);
+    });
+    
+    
+    // FUNCTIONS
+    // Click on note
+    function clickonNote(){
+        $('#noteheader').click(function() {
+            if(!editMode){
+                // Update activeNote variable to ID of note
+                activeNote = $(this).attr("id");
+                // Fill textarea
+                $("textarea").val($(this).find('.text').text());
+                // Show hide elements
+                showHide(["#notePad", "#allNotes"], ["#notes", "#addNote", "#edit", "#done"]);
+                $('#textarea').focus();
+            }
+        });
+    }
 })
