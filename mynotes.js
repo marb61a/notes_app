@@ -119,4 +119,40 @@ $(function(){
             }
         });
     }
+    
+    // Click on delete
+    function clickonDelete(){
+        $(".delete").click(function() {
+            var deleteButton = $(this);
+            // Send AJAX call to delete note
+            $.ajax({
+                url : "deletenote.pho",
+                type : "POST",
+                // Send the id of the note to be deleted
+                data : {id:deleteButton.next().attr("id")},
+                success : function(data){
+                    if(data == 'error'){
+                        $('#alertContent').text("There was an issue delete the note from the database!");
+                        $("#alert").fadeIn();    
+                    } else {
+                        deleteButton.parent().remove();
+                    }   
+                },
+                error : function(){
+                    $('#alertContent').text("There was an error with the Ajax Call. Please try again later.");
+                    $("#alert").fadeIn();
+                }
+            });
+        });
+    }
+    
+    // showHide function
+    function showHide(array1, array2){
+        for(i=0; i<array1.length; i++){
+            $(array1[i]).show();   
+        }
+        for(i=0; i<array2.length; i++){
+            $(array2[i]).hide();   
+        }
+    }
 })
