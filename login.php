@@ -18,4 +18,33 @@
         $password = filter_var($_POST["loginpassword"], FILTER_SANITIZE_STRING);
     }
     
+    // If there are any errors print error message
+    if($errors){
+        $resultMessage = '<div class="alert alert-danger">' . $errors .'</div>';
+        echo $resultMessage;
+    } else {
+        // No errors
+        // Assign variables for db query
+        $email = mysqli_real_escape_string($link, $email);
+        $password = mysqli_real_escape_string($link, $password);
+        $password = hash('sha256', $password);
+        // Run db query
+        $sql = "SELECT * FROM users WHERE email='$email' AND password='$password' AND activation='activated'";
+        $result = mysqli_query($link, $sql);
+        
+        if(!$result){
+            echo '<div class="alert alert-danger">Error running the query</div>';
+            exit;
+        }
+        
+        // If email and password do not match print error
+        $count = mysqli_num_rows($result);
+        if($count !== 1){
+            echo '<div class="alert alert-danger">Wrong Username or Password</div>';
+        } else {
+            // Log user in - Set session variables
+            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        }
+    }
+    
 ?>
