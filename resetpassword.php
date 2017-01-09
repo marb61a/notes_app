@@ -66,7 +66,17 @@
                         // Print reset password form with hidden user_id and key fields
                         echo "
                             <form method=post id='passwordreset'>
-                                
+                                <input type=hidden name=key value=$key>
+                                <input type=hidden name=user_id value=$user_id>  
+                                <div class='form-group'>
+                                    <label for='password'>Enter your new password</label>
+                                    <input type='password' name='password' id='password' placeholder='Enter Password' class='form-control'>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='password2'>Re-enter password</label>
+                                    <input type='password' name='password2' id='password2' placeholder='Re-enter Password' class='form-control'>
+                                </div>
+                                <input type='submit' name='resetpassword' class='btn btn-success btn-lg' value='Reset Password'>
                             </form>
                         ";
                     ?>
@@ -76,5 +86,28 @@
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        
+        <!--Script for Ajax Call to storeresetpassword.php which processes form data-->
+        <script>
+           // Once the form is submitted
+           $("#passwordreset").submit(function(event){
+               // Prevent default processing
+               event.preventDefault();
+               // Collect user inputs
+               var datatopost = $(this).serializeArray();
+               // Use AJAX to send theem to signup.php
+               $.ajax({
+                    url : "storeresetpassword.php",
+                    type : "POST",
+                    data : datatopost,
+                    success : function(data){
+                        $('#resultmessage').html(data);
+                    },
+                    error: function(){
+                        $("#resultmessage").html("<div class='alert alert-danger'>There was an error with the Ajax Call. Please try again later.</div>");
+                    }
+               });
+           });
+        </script>
     </body>
 </html>
