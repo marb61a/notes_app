@@ -29,6 +29,39 @@ include('connection.php');
             <div class="row">
                 <div class="col-sm-offset-1 col-sm-10 contactForm">
                     <h1>Email Activation</h1>
+                    <?php
+                        // If email, new email or activation key is missing show an error
+                        if(!isset(!isset($_GET['email']) || !isset($_GET['newemail']) || !isset($_GET['key'])){
+                            echo '<div class="alert alert-danger">There was an error. Please click on the link you received by email.</div>';
+                            exit;
+                        }
+                        
+                        // Else, store email, newemail and key in variables
+                        $email = $_GET['email'];
+                        $newemail = $_GET['newemail']
+                        $key = $_GET['key'];
+                        
+                        // Prepare variables for the db query
+                        $email = mysqli_real_escape_string($link, $email);
+                        $newemail = mysqli_real_escape_string($link, $newemail);
+                        $key = mysqli_real_escape_string($link, $key);
+                        
+                        // Run db query update email
+                        $sql = "UPDATE users SET email='$newemail', activation2='0' WHERE (email='$email' AND activation2='$key') LIMIT 1";
+                        $result = mysqli_query($link, $sql);
+                        
+                        // If query is successful show success message
+                        if(mysqli_affected_rows($link) == 1){
+                            session_destroy();
+                            setcookie("rememberme", "", time()-3600);
+                            echo '<div class="alert alert-success">Your email has been updated.</div>';
+                            echo '<a href="index.php" type="button" class="btn-lg btn-sucess">Log in<a/>';
+                        } else {
+                            // Show error message
+                            echo '<div class="alert alert-danger">Your email could not be updated. Please try again later.</div>';
+                            echo '<div class="alert alert-danger">' . mysqli_error($link) . '</div>';
+                        }
+                    ?>
                 </div>
             </div>
         </div>
