@@ -25,14 +25,25 @@
                 $time = $row['time'];
                 $time = date("F d, Y h:i:s A", $time);
                 echo "
-                    <div>
+                    <div class='note'>
+                        <div class='col-xs-5 col-sm-3 delete'>
+                            <button class='btn-lg btn-danger' style='width:100%'>
+                                delete
+                            </button>
+                        </div>
+                        <div class='noteheader' id='$note_id'>
+                            <div class='text'>$note</div>
+                            <div class='timetext'>$time</div>
+                        </div>
                     </div>
                 ";
             }
         } else {
-            
+            echo '<div class="alert alert-warning">You have not created any notes yet!</div>';
+            exit;
         }
     } else {
-        
+        echo '<div class="alert alert-warning">An error occured!</div>';
+        exit;  
     }
 ?>

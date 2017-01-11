@@ -44,6 +44,17 @@
         } else {
             // Log user in - Set session variables
             $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+            $_SESSION['user_id']=$row['user_id'];
+            $_SESSION['username']=$row['username'];
+            $_SESSION['email']=$row['email'];
+            
+            if(empty($_POST['rememberme'])){
+                // If rememberme is not checked
+                echo "success";
+            } else {
+                // Create two variables $authentificator1 and $authentificator2
+                $authentificator1 = bin2hex(openssl_random_pseudo_bytes(10));
+            }
         }
     }
     
