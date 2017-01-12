@@ -28,7 +28,42 @@
         if(hash_equals($row['f2authentificator2'], $f2authentificator2)){
             echo '<div class="alert alert-danger">hash_equals returned false.</div>';    
         } else {
+            // Generate new authentificators and store them in cookie and remembeme table
+            $authentificator1 = bin2hex(openssl_pseudo_random_bytes(10));
+            $authentificator2 = openssl_pseudo_random_bytes(20);
+            // Store them in a cookie
+            function f1($a, $b){
+                $c = $a . "," . bin2hex($b);
+                return $c;
+            }
+            $cookieValue = f1($authentificator1, $authentificator2);
+            setcookie(
+                "remembeme",
+                $cookieValue,
+                time() + 1296000
+            );
             
+            // Run db query to store them in rememberme table
+            function f2($a){
+                $b = hash('sha256', $a);
+                return $b;
+            }
+            $f2authentificator2 = f2($authentificator2);
+            $user_id = $_SESSION['user_id'];
+            $expiration = date('Y-m-d H:i:s', time() + 1296000);
+            
+            $sql = "INSERT INTO rememberme
+            (`authentificator1`, `f2authentificator2`, `user_id`, `expires`) VALUES
+            ('$authentificator1', '$f2authentificator2', '$user_id', '$expiration')";
+            $result = mysqli_query($link, $sql);
+            if(!$result){
+                echo '<div class="alert alert-danger">There was an error storing data to remember you next time</div>';
+                exit;
+            }
+            
+            // Log user in and redirect to notes page
+            $_SESSION['user_id'] = $row['user_id'];
+            header("location:mainpageloggedin.php");
         }
     }
 ?>
