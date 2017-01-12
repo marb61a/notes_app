@@ -29,8 +29,8 @@
             echo '<div class="alert alert-danger">hash_equals returned false.</div>';    
         } else {
             // Generate new authentificators and store them in cookie and remembeme table
-            $authentificator1 = bin2hex(openssl_pseudo_random_bytes(10));
-            $authentificator2 = openssl_pseudo_random_bytes(20);
+            $authentificator1 = bin2hex(openssl_random_pseudo_bytes(10));
+            $authentificator2 = openssl_random_pseudo_bytes(20);
             // Store them in a cookie
             function f1($a, $b){
                 $c = $a . "," . bin2hex($b);

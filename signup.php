@@ -78,4 +78,24 @@
         exit;
     }
     
+    // Create a unique activation code
+    $activationKey = bin2hex(openssl_random_pseudo_bytes(16));
+    
+    // Insert user details and activation code in the users table
+    $sql = "INSERT INTO users (`username`, `email`, `password`, `activation`) VALUES 
+        ('$username', '$email', '$password', '$activationKey')";
+    $result = mysqli_query($link, $sql);
+    if(!$result){
+        echo '<div class="alert alert-danger">There was an error inserting the users details in the database!</div>';
+        exit;
+    }
+    
+    // Send email with link to resetpassword.php with user id and activation code
+    $message = "Please click on this link to activate your account:\n\n";
+    $message .= "". urlencode($email) . "&key=$activationKey";
+    if(mail($email, 'Reset your password', $message, 'From:'.'developmentisland@gmail.com')){
+        echo "<div class='alert alert-success'>Thank for your registring! A confirmation email has been sent to $email. 
+        Please click on the activation link to activate your account.</div>";
+    }
+    
 ?>
