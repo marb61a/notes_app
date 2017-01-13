@@ -68,4 +68,26 @@
         exit;
     }
     
+    // Prepare variables for db query
+    $password = mysqli_real_escape_string($link, $password);
+    $password = hash('sha256', $password);
+    $user_id = mysqli_real_escape_string($link, $user_id);
+    
+    // Run db query update users password in users table
+    $sql = "UPDATE users SET password='$password' WHERE user_id='$user_id'";
+    $result = mysqli_query($link, $sql);
+    if(!$result){
+        echo '<div class="alert alert-danger">There was a problem storing the new password in the database!</div>';
+        exit;
+    }
+    
+    // Set the key status to "used" in the forgotpassword table to prevent the key from being used twice
+    $sql = "UPDATE forgotpassword SET status='used' WHERE rkey='$key' AND user_id='$user_id'";
+    $result = mysqli_query($link, $sql);
+    if(!$result){
+        echo '<div class="alert alert-danger">Error running the query</div>';    
+    } else {
+        echo '<div class="alert alert-success">Your password has been update successfully!<a href="index.php">Login</a></div>';
+    }
+    
 ?>
