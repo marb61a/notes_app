@@ -149,6 +149,41 @@ include('remember.php');
             </div>
         </form>
         
+        <!--Forgot password form-->
+        <form method="post" id="forgotpasswordform">
+            <div class="modal" id="forgotpasswordModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" data-dismiss="modal">
+                                &times;
+                            </button>
+                            <h4 id="myModalLabel">
+                                Forgot Password? Enter your email address: 
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <!--forgot password message from PHP file-->
+                            <div id="forgotpasswordmessage"></div>
+                            <div class="form-group">
+                                <label for="forgotemail" class="sr-only">Email:</label>
+                                <input class="form-control" type="email" name="forgotemail" id="forgotemail" placeholder="Email" maxlength="50">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input class="btn green" name="forgotpassword" type="submit" value="Submit">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                Cancel
+                            </button>
+                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal" data-target="signupModal" data-toggle="modal">
+                                Register
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        
         <!-- Footer -->
         <div class="footer">
             <div class="container">
